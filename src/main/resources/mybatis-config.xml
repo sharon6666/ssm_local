@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置全局属性
+
+    此配置的作用是可以让mybatis在执行的时候打印日志，
+    mybatis还有其他很多配置选项，有需求的小伙伴再仔细查看更详细的博文。
+
+    关于mybatis的配置。-->
+
+    <settings>
+        <setting name="logImpl" value="LOG4J" />
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+</configuration>
