@@ -1,10 +1,8 @@
-package com.springmvc.controller;
+package com.ssm.controller;
 
-import com.springmvc.model.User;
-import com.springmvc.service.UserService;
-import com.utils.BasePageResult;
-import com.utils.Page;
-import com.utils.ResultSupport;
+import com.ssm.model.User;
+import com.ssm.redis.RedisUtils;
+import com.ssm.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,28 +13,32 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Controller
-public class UserAction extends Page{
+public class UserController {
 
     @Resource
     private UserService userService;
 
+    @Resource(name = "redisUtils")
+    private RedisUtils redisUtils;
+
     @RequestMapping("/")
     @ResponseBody
-    public String index(){
+    public String index() {
         return "hello world";
     }
 
     @RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public User getUser(@PathVariable int id){
+    public User getUser(@PathVariable int id) {
         return userService.getUser(id);
     }
 
     @RequestMapping(value = "/getAllUser", method = RequestMethod.GET)
     @ResponseBody
-    public BasePageResult getAllUser(int pageSize, int pageNo){
-        BasePageResult result = new BasePageResult();
-        result.setList(userService.selectAll(pageNo, pageSize));
-        return result;
+    public List<User> getAllUser() {
+        if (redisUtils.get("allUser") == null) {
+            redisUtils.set("allUser", userService.selectAll().toString());
+        }
+        return userService.selectAll();
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by hspcadmin on 2018/9/28.
  */
-public class BasePageResult<T> extends ResultSupport{
+public class BasePageResult<T> extends ResultSupport {
     private static final long serialVersionUID = 7378807577314788084L;
     protected int pageNo = 1;
     protected int pageSize = 0;

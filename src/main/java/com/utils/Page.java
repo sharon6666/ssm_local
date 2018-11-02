@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- *
  * 分页实体对象，包含了详细的数据信息，包括分页相关信息。
  * 添加transform方法用来转换类型
  */
@@ -17,7 +16,7 @@ public class Page<T> implements Serializable {
     private static final long serialVersionUID = 3509375972998939764L;
     public static String CURRENT_INDEX = "currentIndex";
     public static String PAGE_SIZE = "pageSize";
-    public static String INDEX="index";
+    public static String INDEX = "index";
     /**
      * 当前页
      */
@@ -67,7 +66,7 @@ public class Page<T> implements Serializable {
      * @param pageSize
      * @param items
      */
-    public Page(int totalNumber,int currentIndex,int pageSize,List<T> items){
+    public Page(int totalNumber, int currentIndex, int pageSize, List<T> items) {
         this.totalNumber = totalNumber;
         this.currentIndex = currentIndex;
         this.pageSize = pageSize;
@@ -117,12 +116,13 @@ public class Page<T> implements Serializable {
 
     /**
      * 总页数
+     *
      * @return
      */
     public int getTotalPage() {
 
-        int size = this.totalNumber/this.pageSize;
-        if(this.totalNumber%this.pageSize != 0){
+        int size = this.totalNumber / this.pageSize;
+        if (this.totalNumber % this.pageSize != 0) {
             size = size + 1;
         }
         this.totalPage = size;
@@ -138,9 +138,9 @@ public class Page<T> implements Serializable {
      */
     public int getNextIndex() {
 
-        if(this.currentIndex >= this.getTotalPage()){
+        if (this.currentIndex >= this.getTotalPage()) {
             this.nextIndex = this.currentIndex;
-        }else{
+        } else {
             this.nextIndex = this.currentIndex + 1;
         }
         return nextIndex;
@@ -148,14 +148,15 @@ public class Page<T> implements Serializable {
 
     /**
      * 当前页的上一页，如果当前页小于第一页那么上一页为0
+     *
      * @return
      */
     public int getPreIndex() {
 
-        if(this.currentIndex <= 1){
+        if (this.currentIndex <= 1) {
             this.preIndex = 0;
-        }else{
-            this.preIndex = this.currentIndex -1;
+        } else {
+            this.preIndex = this.currentIndex - 1;
         }
 
         return preIndex;
@@ -175,15 +176,15 @@ public class Page<T> implements Serializable {
         Items = items;
     }
 
-    public  String replaceUrl(String url,int page){
+    public String replaceUrl(String url, int page) {
 
-        if(url!=null&&url.indexOf("?")==-1){
-            return url+"?"+INDEX+"="+page;
+        if (url != null && url.indexOf("?") == -1) {
+            return url + "?" + INDEX + "=" + page;
         }
-        if(url!=null&&url.indexOf("index=")==-1){
-            return url+"&"+INDEX+"="+page;
+        if (url != null && url.indexOf("index=") == -1) {
+            return url + "&" + INDEX + "=" + page;
         }
-        return url==null?"":url.replaceAll("index=\\d{1,}", INDEX+"="+page);
+        return url == null ? "" : url.replaceAll("index=\\d{1,}", INDEX + "=" + page);
     }
 
 }
