@@ -6,7 +6,9 @@ import com.ssm.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hspcadmin on 2018/10/26.
@@ -28,7 +30,10 @@ public class UserServiceImpl implements UserService {
         return userMapper.insert(user);
     }
 
-    public List<User> selectAll() {
-        return userMapper.getAllUser();
+    public List<User> selectAll(Integer pageNo, Integer pageSize) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("currIndex", (pageNo -1) * pageSize);
+        map.put("pageSize", pageNo * pageSize);
+        return userMapper.getAllUser(map);
     }
 }

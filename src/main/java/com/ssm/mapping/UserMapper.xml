@@ -18,14 +18,14 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="getAllUser" resultMap="BaseResultMap">
+  <select id="getAllUser" resultMap="BaseResultMap" parameterType="map">
     select
     <include refid="Base_Column_List" />
-    from user
+    from user limit #{currIndex}, #{pageSize}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
+    delete from ${tableName}
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ssm.model.User">

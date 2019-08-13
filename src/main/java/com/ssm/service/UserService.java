@@ -15,6 +15,6 @@ public interface UserService {
 
     public int insertAdmin(User user);
 
-    public List<User> selectAll();
+    public List<User> selectAll(Integer pageNo, Integer pageSize);
 
 }

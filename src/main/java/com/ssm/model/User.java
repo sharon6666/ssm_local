@@ -9,6 +9,9 @@ public class User implements Serializable {
 
     private String password;
 
+    private int I1 = new Integer(1);
+    private static Integer I2 = new Integer(1);
+
     public Integer getId() {
         return id;
     }
@@ -31,5 +34,15 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", I1=" + I1 +
+                '}';
     }
 }

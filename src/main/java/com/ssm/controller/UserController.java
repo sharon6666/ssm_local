@@ -33,12 +33,10 @@ public class UserController {
         return userService.getUser(id);
     }
 
-    @RequestMapping(value = "/getAllUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAllUser/{pageNo}/{pageSize}", method = RequestMethod.GET)
     @ResponseBody
-    public List<User> getAllUser() {
-        if (redisUtils.get("allUser") == null) {
-            redisUtils.set("allUser", userService.selectAll().toString());
-        }
-        return userService.selectAll();
+    public List<User> getAllUser(@PathVariable Integer pageNo, @PathVariable  Integer pageSize) {
+        List<User> list = userService.selectAll(pageNo, pageSize);
+        return list;
     }
 }
