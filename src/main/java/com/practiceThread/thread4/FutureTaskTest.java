@@ -1,8 +1,5 @@
-package com.utils.thread4;
+package com.practiceThread.thread4;
 
-import jdk.nashorn.internal.codegen.CompilerConstants;
-
-import javax.sound.midi.Soundbank;
 import java.util.concurrent.*;
 
 /**
