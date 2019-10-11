@@ -1,4 +1,4 @@
-package com.utils.thread2;
+package com.practiceThread.thread2;
 
 /**
  * 文件描述

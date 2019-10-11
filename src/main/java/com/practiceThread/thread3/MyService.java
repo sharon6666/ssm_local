@@ -1,4 +1,4 @@
-package com.utils.thread3;
+package com.practiceThread.thread3;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

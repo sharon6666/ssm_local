@@ -1,7 +1,4 @@
-package com.utils.thread3;
-
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
-import java.util.concurrent.locks.Condition;
+package com.practiceThread.thread3;
 
 /**
  * 文件描述
