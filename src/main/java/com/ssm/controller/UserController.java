@@ -3,16 +3,15 @@ package com.ssm.controller;
 import com.ssm.model.User;
 import com.ssm.redis.RedisUtils;
 import com.ssm.service.UserService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.nio.ByteBuffer;
 import java.util.List;
 
-@Controller
+@RestController
 public class UserController {
 
     @Resource
@@ -22,21 +21,23 @@ public class UserController {
     private RedisUtils redisUtils;
 
     @RequestMapping("/")
-    @ResponseBody
     public String index() {
         return "hello world";
     }
 
     @RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
-    @ResponseBody
     public User getUser(@PathVariable int id) {
         return userService.getUser(id);
     }
 
     @RequestMapping(value = "/getAllUser/{pageNo}/{pageSize}", method = RequestMethod.GET)
-    @ResponseBody
     public List<User> getAllUser(@PathVariable Integer pageNo, @PathVariable  Integer pageSize) {
         List<User> list = userService.selectAll(pageNo, pageSize);
+        
+        String f = "rfdstgf";
+        f.length();
+        list.size();
         return list;
     }
+
 }
