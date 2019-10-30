@@ -19,7 +19,18 @@ import java.util.concurrent.CountDownLatch;
  * @Version: 1.0
  * <p>
  * Copyright © 2019 Hundsun Technologies Inc. All Rights Reserved
- *  CountDownLatch强调的是一个线程（或多个）需要等待另外的n个线程干完某件事情之后才能继续执行。 上述例子，main线程是裁判，5个AWorker是跑步的。
+ *
+ *      一个非常典型的应用场景是：有一个任务想要往下执行，但必须要等到其他的任务执行完毕后才可以继续往下执行。
+ * 假如我们这个想要继续往下执行的任务调用一个CountDownLatch对象的await()方法，其他的任务执行完自己的任务后调用
+ * 同一个CountDownLatch对象上的countDown()方法，这个调用await()方法的任务将一直阻塞等待，
+ * 直到这个CountDownLatch对象的计数值减到0为止。
+
+ *
+ *      用法：用给定的计数初始化CountDownLatch。调用countDown()方法计数减 1，在计数被减到 0之前，
+ *      调用await方法会一直阻塞。减为 0之后，则会迅速释放所有阻塞等待的线程，并且调用await操作会立即返回。
+ *      CountDownLatch强调的是一个线程（或多个）需要等待另外的n个线程干完某件事情之后才能继续执行。
+ *
+ *  下面例子，main线程是裁判，5个AWorker是跑步的。
  *  运动员先准备，裁判喊跑，运动员才开始跑（这是第一次同步，对应begin）。
  *  5个人谁跑到终点了，countdown一下，直到5个人全部到达，裁判喊停（这是第二次同步，对应end），然后算时间。
  **/

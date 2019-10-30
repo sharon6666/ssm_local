@@ -59,6 +59,9 @@ public class SpringTest {
 //        propertyValues.addPropertyValue(new PropertyValue("newsListener",newsListener));
 //        propertyValues.addPropertyValue(new PropertyValue("newPersistener",newsPersister));
         newsProvider.setPropertyValues(propertyValues);
+
+        StringBuffer bf = new StringBuffer();
+        StringBuilder bd = new StringBuilder();
         return (BeanFactory) registry;
     }
 }

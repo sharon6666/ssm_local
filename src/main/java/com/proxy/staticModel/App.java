@@ -21,8 +21,10 @@ import com.proxy.staticModel.UserDAO;
  **/
 public class App {
     public static void main(String[] args){
-        UserDAO userDao = new UserDAO();
-        UserDaoProxy proxy = new UserDaoProxy(userDao);
-        proxy.save();
+//        UserDAO userDao = new UserDAO();
+//        UserDaoProxy proxy = new UserDaoProxy(userDao);
+//        proxy.save();
+        Character c = '1';
+        System.out.println(c == '1');
     }
 }
