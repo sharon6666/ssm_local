@@ -46,10 +46,10 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
     </bean>
 
- <!--   &lt;!&ndash;声明目标类&ndash;&gt;
+ <!--   &lt;!&ndash;声明目标类&ndash;&gt;-->
     <bean id="targetclass" class="com.ssm.aop.TargetClass"></bean>
 
-    &lt;!&ndash;声明扩展类&ndash;&gt;
+    <!-- &lt;!&ndash;声明扩展类&ndash;&gt;-->
     <bean id="extendsclass" class="com.ssm.aop.ExtendsClass"></bean>
 
 
@@ -58,7 +58,7 @@
 
     <bean id="aspectBean" class="com.ssm.aop.ExtendsClass" />
     <bean id="aService" class="com.ssm.service.impl.UserServiceImpl"></bean>
-    <bean id="bService" class="com.ssm.service.impl.UserServiceImpl"></bean>-->
+    <bean id="bService" class="com.ssm.service.impl.UserServiceImpl"></bean>
 
 
 </beans>

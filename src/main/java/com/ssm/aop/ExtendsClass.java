@@ -2,6 +2,8 @@ package com.ssm.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by hspcadmin on 2018/10/26.
@@ -45,5 +47,17 @@ public class ExtendsClass {
         Object o = pjp.proceed();
         System.out.println("退出方法---环绕通知");
         return o;
+    }
+    public static void main(String[] args) {
+        //1.创建spring 的IOC容器
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+        //2.从IOC容器中获取Bean的实例
+        // ArtithmeticCalculator artithmeticCalculator=ctx.getBean(ArtithmeticCalculator.class);
+        //3.使用Bean
+        /*int result=artithmeticCalculator.add(3, 6);
+        System.out.println("result: "+result);
+
+        result=artithmeticCalculator.div(12, 6);
+        System.out.println("result: "+result);*/
     }
 }
