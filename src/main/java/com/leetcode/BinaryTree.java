@@ -1,8 +1,8 @@
 package com.leetcode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import javafx.scene.AmbientLight;
+
+import java.util.*;
 
 /**
  * 文件描述
@@ -110,6 +110,26 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * 按层排序
+     * @param root
+     */
+    public static void orderByStair(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        TreeNode temp;
+        while (!queue.isEmpty()){
+            temp = queue.poll();
+            System.out.printf(temp.value + "->");
+            if(null != temp.left){
+                queue.offer(temp.left);
+            }
+            if(null != temp.right){
+                queue.offer(temp.right);
+            }
+        }
+    }
+
     public static void main(String[] args){
         TreeNode[] arr = new TreeNode[10];
         for(int i=0;i<arr.length;i++){
@@ -148,7 +168,35 @@ public class BinaryTree {
         firstErgodic(arr[0]);
         System.out.println();
         firstErgodic1(arr[0]);
+
+        System.out.println();
+        System.out.println("按层排序");
+        orderByStair(arr[0]);
+
+
+        System.out.println( Math.max(11,11));
     }
+
+    private static class BinaryNode<AnyType>{
+        AnyType element;
+        BinaryNode left;
+        BinaryNode right;
+        BinaryNode(AnyType theElement){
+            this(theElement, null, null);
+        }
+
+        BinaryNode(AnyType theElement, BinaryNode l1, BinaryNode r1){
+            element = theElement;
+            l1 = left;
+            r1 = right;
+        }
+    }
+}
+
+class BinaryNode{
+ Object element;
+ BinaryNode left;
+ BinaryNode right;
 }
 
 class TreeNode{

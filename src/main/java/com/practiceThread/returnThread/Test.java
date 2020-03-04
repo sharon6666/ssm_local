@@ -32,7 +32,7 @@ public class Test {
         thread.start();
         System.out.println("ft.get()::::" + ft.get());
 
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        System.out.println("可同时进行线程数：" + Runtime.getRuntime().availableProcessors());
         /**
          * 有返回值的任务必须实现 Callable 接口，类似的，无返回值的任务必须 Runnable 接口。执行
          * Callable 任务后，可以获取一个 Future 的对象，在该对象上调用 get 就可以获取到 Callable 任务

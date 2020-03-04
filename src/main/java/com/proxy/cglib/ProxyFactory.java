@@ -23,24 +23,30 @@ import java.lang.reflect.Method;
  * Copyright © 2019 Hundsun Technologies Inc. All Rights Reserved
  **/
 public class ProxyFactory implements MethodInterceptor {
-    private Object target;//目标对象
+    // 目标对象
+    private Object target;
 
     public ProxyFactory(Object target){
         this.target = target;
     }
 
-    //给目标对象创建一个代理对象
+    /**
+     * 给目标对象创建一个代理对象
+     */
     public Object getTargetInstance(){
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(target.getClass());//设置父类
+        // 设置父类
+        enhancer.setSuperclass(target.getClass());
         enhancer.setCallback(this);
-        return enhancer.create();//创建子类，代理对象
+        // 创建子类，代理对象
+        return enhancer.create();
     }
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("调用cglib包实现代理");
-        Object returnV = method.invoke(target,objects);//执行目标对象的方法
+        // 执行目标对象的方法
+        Object returnV = method.invoke(target,objects);
         return returnV;
     }
 }

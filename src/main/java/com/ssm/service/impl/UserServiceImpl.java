@@ -26,10 +26,12 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
+    @Override
     public int insertAdmin(User user) {
         return userMapper.insert(user);
     }
 
+    @Override
     public List<User> selectAll(Integer pageNo, Integer pageSize) {
         Map<String, Object> map = new HashMap<>();
         map.put("currIndex", (pageNo -1) * pageSize);

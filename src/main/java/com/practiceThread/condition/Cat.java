@@ -140,4 +140,5 @@ class TreeNode {
      TreeNode left;
      TreeNode right;
      TreeNode(int x) { val = x; }
+     byte a=1;
  }
