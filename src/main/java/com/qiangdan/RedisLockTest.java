@@ -42,11 +42,7 @@ public class RedisLockTest {
             if(nkuCun <= 0){
                 break;
             }
-            if(Jedis){
-
-            }
         }
-
         return null;
     }
 }

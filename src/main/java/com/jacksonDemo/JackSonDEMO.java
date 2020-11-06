@@ -30,30 +30,36 @@ public class JackSonDEMO {
     private static ObjectMapper objectMapper = new ObjectMapper();
     public static void main(String[] args) throws Exception{
         PostVoiceInfo postVoiceInfo = new PostVoiceInfo();
-        String voiceJson = objectMapper.writeValueAsString(postVoiceInfo);//对象转json
+        //对象转json
+        String voiceJson = objectMapper.writeValueAsString(postVoiceInfo);
         System.out.println(voiceJson);
 
         PostVoiceInfo postVoiceInfo1 = objectMapper.readValue(voiceJson, PostVoiceInfo.class);
-        System.out.println(postVoiceInfo1.toString());//json转对象
+        //json转对象
+        System.out.println(postVoiceInfo1.toString());
 
         Map<String, String> map = new HashMap();
         map.put("stateId", "12");
         map.put("onlineCompose", "1");
         map.put("md5", "vcdsfesdczdgrtesdws");
-        String mapJson = objectMapper.writeValueAsString(map);//map转json
+        //map转json
+        String mapJson = objectMapper.writeValueAsString(map);
         System.out.println(mapJson);
 
         Map<String, String> stringMap = objectMapper.readValue(mapJson, HashedMap.class);
-        System.out.println(stringMap);//json转map
+        //json转map
+        System.out.println(stringMap);
 
         Map<String, PostVoiceInfo> mapPost = new HashMap<>();
         mapPost.put("post1", new PostVoiceInfo("name", '1', "dwefwrfdwer"));
         String mapJson1 = objectMapper.writeValueAsString(mapPost);
-        System.out.println(mapJson1);//map对象转json
+        //map对象转json
+        System.out.println(mapJson1);
 
         JavaType jvt = objectMapper.getTypeFactory().constructParametricType(HashMap.class,String.class,PostVoiceInfo.class);
         Map<String,User> urMap = objectMapper.readValue(mapJson1, jvt);
-        System.out.println(urMap);//json转map对象
+        //json转map对象
+        System.out.println(urMap);
 
 
         //list<String>转json

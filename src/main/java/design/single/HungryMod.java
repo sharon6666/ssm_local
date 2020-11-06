@@ -1,6 +1,4 @@
-package com.designer;
-
-import java.rmi.MarshalledObject;
+package design.single;
 
 /**
  * @author wangrx23694

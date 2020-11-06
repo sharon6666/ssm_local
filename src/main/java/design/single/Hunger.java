@@ -1,5 +1,10 @@
 package design.single;
 
+import javafx.collections.ArrayChangeListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 文件描述
  * 饿汉式单例模式  饿汉式天生线程安全，类加载的时候初始化一次对象，效率比懒汉式高。
@@ -32,6 +37,5 @@ public class Hunger {
         Hunger teacher1 = Hunger.getInstance();
         Hunger teacher2 = Hunger.getInstance();
         System.out.println(teacher1==teacher2);
-
     }
 }

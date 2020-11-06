@@ -1,6 +1,4 @@
-package com.designer;
-
-import net.jpountz.lz4.LZ4BlockInputStream;
+package design.single;
 
 /**
  * @author wangrx23694
